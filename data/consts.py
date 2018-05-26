@@ -1,0 +1,5 @@
+first_chrs = 'abcdefghijklmnopqrstuvwxyz0123456789'
+base_url = 'http://www.ananmanan.lk/free-sinhala-mp3/'
+song_by_name = 'http://www.ananmanan.lk/free-sinhala-mp3/songs/songs-by-%s/%d'
+song_page_heading = 'Sinhala MP3 Songs'
+download_url = 'http://www.ananmanan.lk/free-sinhala-mp3/download.php?id=%d'
