@@ -55,6 +55,10 @@ class DataLoader(object):
     def get_name_list_from(self, c: str, pid: int=1):
         url = song_by_name % (c, pid)
         return self.get_name_list_from_url(url, False)
+    
+    def get_name_list_from_all(self, pid: int):
+        url = all_song_url % pid
+        return self.get_name_list_from_url(url)
 
     def get_name_list_from_url(self, url: str, any: bool=True):
         self.set_soup(url)

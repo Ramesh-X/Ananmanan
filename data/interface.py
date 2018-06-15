@@ -99,6 +99,8 @@ class Interface(object):
     def __custom_search(self, cmd: str):
         if cmd == 'url':
             self.__state = URL_BASED_CUSTOM
+        elif cmd == 'all':
+            self.__state = ALL_DOWN_CUSTOM
         else:
             self.__handle_back(cmd, self.__search)
 
@@ -131,6 +133,26 @@ class Interface(object):
             if item['count'] > count_lim:
                 print("downloading item: '%s' with %d downloads" % (item['name'], item['count']))
                 self.__data_loader.download_file_from_id(item['id'], '%s.mp3' % item['name'])
+                
+    def __custom_all_download(self, cmd: str):
+        try:
+            count_lim = int(cmd)
+        except:
+            print("Enter the minimum download count. If need to download all enter 0")
+            return
+        i = 0
+        while True:
+            i += 1
+            item_list = self.__data_loader.get_name_list_from_all(i)
+            if item_list is None:
+                print("Program stopped downloading songs in page", i)
+                return
+            name_list, _ = item_list
+            for item in name_list:
+                if item['count'] > count_lim:
+                    print("downloading item: '%s' with %d downloads" % (item['name'], item['count']))
+                    self.__data_loader.download_file_from_id(item['id'], '%s.mp3' % item['name'])
+        
 
     def __redirect_to_function(self, cmd: str):
         cmd = cmd.strip()
@@ -148,6 +170,8 @@ class Interface(object):
             self.__custom_search(cmd)
         elif self.__state == URL_BASED_CUSTOM:
             self.__custom_url_based(cmd)
+        elif self.__state == ALL_DOWN_CUSTOM:
+            self.
 
     def begin(self):
         cmd = 'initial'
