@@ -171,7 +171,7 @@ class Interface(object):
         elif self.__state == URL_BASED_CUSTOM:
             self.__custom_url_based(cmd)
         elif self.__state == ALL_DOWN_CUSTOM:
-            self.
+            self.__custom_all_download(cmd)
 
     def begin(self):
         cmd = 'initial'
