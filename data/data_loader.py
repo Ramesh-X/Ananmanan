@@ -71,7 +71,7 @@ class DataLoader(object):
             values = {
                 'index': int(i),
                 'name': song.a.text,
-                'id': int(song.a.get('href').split('/')[3]),
+                'id': int(song.a.get('href').split('/')[-2]),
                 'count': int(song.find_all('span', class_='downlodcount')[0].text[1:-2].replace(',', ''))
             }
             name_list.append(values)
